@@ -8,11 +8,9 @@ export interface BackgroundProperties {
 
 function Background ({ image, children }: BackgroundProperties) {
 	return (
-		<div className="container">
-			<S.Image image={ image }>
-				{children}
-			</S.Image>
-		</div>
+		<S.Image image={ image }>
+			{ children }
+		</S.Image>
 	); 
 }
 
