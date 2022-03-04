@@ -7,13 +7,12 @@ export const Section = styled.section `
     flex-direction: column;
     align-items: center;
     margin: auto;
-    padding-bottom: 30px;
+    padding: 30px 0;
     background-color: #ffffff;
     border-radius: 20px;
 `;
 
 export const Title = styled.h1 `
-    margin-top: 30px;
     font-family: "Gemunu Libre";
     font-size: 45px;
     font-weight: 400;
@@ -27,7 +26,7 @@ export const Logo = styled.img `
 `;
 
 export const Form = styled.form `
-    width: 220px;
+    width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -8,7 +8,7 @@ interface IField {
     label: string;
     type: string;
     register?: FieldValues;
-    onInput?: () => any;
+    onInput?: () => Event | void;
     placeholder?: string;
     errorMessage?: string;
 }
