@@ -1,5 +1,6 @@
 import React from "react";
 import { FieldValues } from "react-hook-form";
+import { ErrorMessage } from "../ErrorMessage";
 import * as S from "./styles";
 
 interface IField {
@@ -7,18 +8,25 @@ interface IField {
     label: string;
     type: string;
     register?: FieldValues;
+    onInput?: () => any;
     placeholder?: string;
-    defaultValue?: string;
     errorMessage?: string;
 }
 
-export function Field({ id, label, type, placeholder, register, defaultValue, errorMessage }: IField) {
+export function Field({ id, label, type, placeholder, register, errorMessage, onInput }: IField) {
 
 	return (
 		<S.Field>
 			<S.Label htmlFor={ id }>{ label }</S.Label>
-			<S.Input id={ id } { ...register } type={ type } placeholder={ placeholder } value={ defaultValue } />
-			<S.ErrorMessage>{ errorMessage }</S.ErrorMessage>
+
+			<S.Input id={ id }
+				{ ...register }
+				type={ type }
+				placeholder={ placeholder }
+				onInput={ onInput }
+			/>
+
+			<ErrorMessage text={ errorMessage } />
 		</S.Field>
 	);
 }
