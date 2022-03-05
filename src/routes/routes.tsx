@@ -34,7 +34,7 @@ export const Router: React.FC = () => (
 	
 	<UserProvider>
 		<Routes>
-			<Route path="/" element={<Navigate to="/login" />} />
+			<Route path="/" element={<Navigate to="/sign-up" />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/sign-up" element={
 				<Public>
@@ -42,7 +42,7 @@ export const Router: React.FC = () => (
 				</Public>
 			} />
 
-			<Route path="/profile" element={ 
+			<Route path="/" element={ 
 				<Private>
 					<SignUp />
 				</Private> 
