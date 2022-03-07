@@ -14,8 +14,9 @@ export default createGlobalStyle `
     }
 
     p {
-        margin: 10px 0;
+        margin: 8px 0;
         font-size: 12px;
+        text-align: center;
         line-height: 16px;
         letter-spacing: 0.05em;
     }

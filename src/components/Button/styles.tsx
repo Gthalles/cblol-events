@@ -4,7 +4,7 @@ import { Props } from ".";
 export const Button = styled.button `
     width: 100%;
     height: 35px;
-    margin: 25px auto 20px auto;
+    margin: 15px auto 10px auto;
     border-radius: 5px;
     border: none;
     cursor: ${ ({disable}: Props) => disable ? "not-allowed" : "pointer" };

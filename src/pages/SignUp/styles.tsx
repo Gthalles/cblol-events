@@ -7,7 +7,7 @@ export const Section = styled.section `
     flex-direction: column;
     align-items: center;
     margin: auto;
-    padding: 30px 0;
+    padding: 35px 0;
     background-color: #ffffff;
     border-radius: 20px;
 `;
@@ -37,4 +37,9 @@ export const FieldGroup = styled.div `
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 2em;
+`;
+
+export const BottomField = styled.div `
+    width: 60%;
+    margin: 10px auto 15px auto;
 `;

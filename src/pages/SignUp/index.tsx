@@ -4,15 +4,21 @@ import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { schema } from "./validation";
-import registerBackground from "../../assets/images/registerBackground.png";
+import background from "../../assets/images/background.png";
 import logo from "../../assets/images/logo.png";
 
 import { Background } from "../../components/Background";
 import { Button } from "../../components/Button";
 import { Field } from "../../components/Field";
 
+useEffect(() => {
+	console.log();
+}, []);
 
 
+const registerUser = (userData: FieldValues) => {
+	console.log(userData);
+};
 
 export const SignUp: React.FC = () => {
 	const { register, handleSubmit, formState: { errors } } = useForm({
@@ -22,9 +28,10 @@ export const SignUp: React.FC = () => {
 	});
 
 	return (
-		<Background image={ registerBackground }>
+		<Background image={ background }>
+
 			<S.Section>
-				<S.Form>
+				<S.Form onSubmit={ handleSubmit(registerUser) }>
 					<S.Title>Cadastre-se</S.Title>
 					<S.Logo src={ logo } alt="CBLOL-Events logo"></S.Logo>
 
@@ -84,10 +91,12 @@ export const SignUp: React.FC = () => {
 						/>
 					</S.FieldGroup>
 
-					<Button color="#0BC4E2" disabledColor="#0bc5e279">Cadastrar</Button>
+					<S.BottomField>
+						<Button color="#0BC4E2" disabledColor="#0bc5e279">Cadastrar</Button>
+						<p>Já possuo uma conta. <a href="/login">Fazer login</a></p>
+					</S.BottomField>
 				</S.Form>
 	
-				<p>Já possuo uma conta. <a href="/login">Fazer login</a></p>
 			</S.Section>
 		</Background>
 	);

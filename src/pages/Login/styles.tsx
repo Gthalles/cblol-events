@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section ` 
     width: 30vw;
-    height: 80vh;
+    height: 78vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,8 +26,13 @@ export const Logo = styled.img `
 `;
 
 export const Form = styled.form `
-    width: 60%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+export const BottomField = styled.div `
+    width: 100%;
+    margin: 10px auto;
 `;
