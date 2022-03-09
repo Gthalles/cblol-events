@@ -23,8 +23,8 @@ const email = {
 
 const cpf = {
 	name: "CPF",
-	minLength: 11,
-	maxLength: 11,
+	minLength: 14,
+	maxLength: 14,
 	regex: /\d{3}\d{3}\d{3}\d{2}$/
 };
 
@@ -43,8 +43,8 @@ const password = {
 export const schema = yup.object({
 	fullname: yup.string().required(requiredErrorMessage).min(name.minLength, minLengthMessage(name.minLength)).max(name.maxLength, maxLengthMessage(name.maxLength)),
 	email: yup.string().required(requiredErrorMessage).matches(email.regex, "Email inválido."),
-	document: yup.string().required(requiredErrorMessage).matches(cpf.regex, "Documento inválido").min(cpf.minLength, minLengthMessage(cpf.minLength)).max(cpf.maxLength, maxLengthMessage(cpf.maxLength)),
+	document: yup.string().required(requiredErrorMessage).min(cpf.minLength, minLengthMessage(cpf.minLength)).max(cpf.maxLength, maxLengthMessage(cpf.maxLength)),
 	birthDate: yup.string().required(requiredErrorMessage),
 	password: yup.string().required(requiredErrorMessage).min(password.minLength, minLengthMessage(password.minLength)).max(password.maxLength, maxLengthMessage(password.maxLength)).matches(password.regex, "Senha inválida."),
-	confirmPassword: yup.string().required(requiredErrorMessage),
+	confirmPassword: yup.string().oneOf([yup.ref("password")], "Senhas não correspondem.").required(requiredErrorMessage),
 }).required();

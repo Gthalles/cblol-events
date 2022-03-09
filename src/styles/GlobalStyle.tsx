@@ -7,6 +7,13 @@ export default createGlobalStyle `
         font-family: "Encode sans";
         color: #353535;
     }
+
+    input {
+        height: 30px;
+        text-indent: 10px;
+        border-radius: 5px;
+        border: 1px solid rgba(117, 109, 109, 0.479);
+    }
     
     input::placeholder {
         text-indent: 10px;

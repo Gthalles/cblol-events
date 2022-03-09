@@ -1,35 +1,58 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styles";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm, FieldValues } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+import { API } from "../../services/api";
 import { schema } from "./validation";
+
 import background from "../../assets/images/background.png";
 import logo from "../../assets/images/logo.png";
-
+import { IMessage } from "../../models/message";
 import { Background } from "../../components/Background";
 import { Button } from "../../components/Button";
 import { Field } from "../../components/Field";
-
-useEffect(() => {
-	console.log();
-}, []);
+import { ErrorMessage } from "../../components/ErrorMessage";
 
 
-const registerUser = (userData: FieldValues) => {
-	console.log(userData);
-};
 
 export const SignUp: React.FC = () => {
+	const [ disable, setDisable ] = useState<boolean>(false);
+	const [ errorMessage, setErrorMessage ] = useState<IMessage>();
+
+	const registerUser = (userData: FieldValues) => {
+		setErrorMessage(undefined), setDisable(true);
+
+		setTimeout(async () => {
+			setDisable(false);
+
+			if (userData) {
+				API.post("/register-user", userData)
+					.then(() => {
+						console.log("Registrado com sucesso!");
+					}).catch((error: any) => {
+						setErrorMessage(error?.response?.data);
+					});
+			}
+		}, 1000);
+	};
+
 	const { register, handleSubmit, formState: { errors } } = useForm({
 		mode: "onBlur",
 		reValidateMode: "onChange",
 		resolver: yupResolver(schema)
 	});
 
+	useEffect(() => {
+		if (errors.fullname || errors.birthDate || errors.document || errors.email ||  errors.password || errors.confirmPassword) {
+			setDisable(true);
+		} else {
+			setDisable(false);
+		}
+
+	}, [ errors.fullname || errors.birthDate || errors.document || errors.email ||  errors.password || errors.confirmPassword ]);
+
 	return (
 		<Background image={ background }>
-
 			<S.Section>
 				<S.Form onSubmit={ handleSubmit(registerUser) }>
 					<S.Title>Cadastre-se</S.Title>
@@ -43,15 +66,17 @@ export const SignUp: React.FC = () => {
 							placeholder="Nome completo"
 							label="Nome"
 							errorMessage={ errors.fullname?.message }
+							onInput={ () => setErrorMessage(undefined) }
 						/>
 
 						<Field
-							id="birthDate"
+							id="birthDate"	
 							register={ { ...register("birthDate") } }
 							type="date"
 							placeholder="DD/MM/YYYY"
 							label="Date de nascimento"
 							errorMessage={ errors.birthDate?.message }
+							onInput={ () => setErrorMessage(undefined) }
 						/>
 
 						<Field
@@ -61,6 +86,8 @@ export const SignUp: React.FC = () => {
 							placeholder="XXX.XXX.XXX-XX"
 							label="CPF"
 							errorMessage={ errors.document?.message }
+							onInput={ () => setErrorMessage(undefined) }
+							mask="999.999.999-99"
 						/>
 
 						<Field
@@ -70,6 +97,7 @@ export const SignUp: React.FC = () => {
 							placeholder="seu_email@exemplo.com"
 							label="E-mail"
 							errorMessage={ errors.email?.message }
+							onInput={ () => setErrorMessage(undefined) }
 						/>
 
 						<Field
@@ -79,6 +107,7 @@ export const SignUp: React.FC = () => {
 							placeholder="Insira sua senha"
 							label="Senha"
 							errorMessage={ errors.password?.message }
+							onInput={ () => setErrorMessage(undefined) }
 						/>
 
 						<Field
@@ -88,15 +117,16 @@ export const SignUp: React.FC = () => {
 							placeholder="Repita sua senha"
 							label="Confirmar senha"
 							errorMessage={ errors.confirmPassword?.message }
+							onInput={ () => setErrorMessage(undefined) }
 						/>
 					</S.FieldGroup>
 
 					<S.BottomField>
-						<Button color="#0BC4E2" disabledColor="#0bc5e279">Cadastrar</Button>
+						<ErrorMessage text={ errorMessage?.detail }></ErrorMessage>
+						<Button color="#0BC4E2" disabledColor="#0bc5e279" disable={ disable }>Cadastrar</Button>
 						<p>Já possuo uma conta. <a href="/login">Fazer login</a></p>
 					</S.BottomField>
 				</S.Form>
-	
 			</S.Section>
 		</Background>
 	);

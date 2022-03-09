@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
+
 export const Field = styled.div `
     width: 100%;
     display: flex;
-    align-itens: center;
     flex-direction: column;
     margin: 7px 0;
 `;

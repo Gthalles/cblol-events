@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Section = styled.section ` 
-    width: 36vw;
+    width: 34vw;
     height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: auto;
-    padding: 35px 0;
+    padding: 30px 0;
     background-color: #ffffff;
     border-radius: 20px;
 `;
@@ -41,5 +41,5 @@ export const FieldGroup = styled.div `
 
 export const BottomField = styled.div `
     width: 60%;
-    margin: 10px auto 15px auto;
+    margin: 0px auto 15px auto;
 `;
