@@ -5,12 +5,14 @@ import { UserProvider, useUserContext } from "../providers/UserProvider";
 
 import { SignUp } from "../pages/SignUp";
 import { Login } from "../pages/Login";
+import { AvailableEvents } from "../pages/AvailableEvents";
+import { Home } from "../pages/Home";
 
 const Public = ({ children }: any) => {
 	const { user } = useUserContext();
 
 	if (user) {
-		return <Navigate to="/profile" />;
+		return <Navigate to="/home" />;
 	}
 
 	return children;
@@ -26,7 +28,7 @@ const Private = ({ children }: any) => {
 	if (!user) {
 		return <Navigate to="/" />;
 	}
-  
+	
 	return children;
 };
 
@@ -35,18 +37,27 @@ export const Router: React.FC = () => (
 	<UserProvider>
 		<Routes>
 			<Route path="/" element={<Navigate to="/sign-up" />} />
-			<Route path="/login" element={<Login />} />
+
 			<Route path="/sign-up" element={
 				<Public>
 					<SignUp />
 				</Public>
 			} />
+			
+			<Route path="/login" element={
+				<Public>
+					<Login />
+				</Public>
+			} />
 
-			<Route path="/" element={ 
+			<Route path="/home" element={ 
 				<Private>
-					<SignUp />
+					<Home />
 				</Private> 
 			} />
+
+			<Route path="/available-events" element={<AvailableEvents />} />
+
 		</Routes>
 	</UserProvider>
 );
