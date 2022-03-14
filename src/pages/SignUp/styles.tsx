@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Section = styled.section ` 
-    width: 30vw;
-    height: 78vh;
+    width: 34vw;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,13 +26,20 @@ export const Logo = styled.img `
 `;
 
 export const Form = styled.form `
-    width: 55%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
-export const BottomField = styled.div `
+export const FieldGroup = styled.div `
     width: 100%;
-    margin: 10px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2em;
+`;
+
+export const BottomField = styled.div `
+    width: 60%;
+    margin: 0px auto 15px auto;
 `;
