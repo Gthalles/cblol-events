@@ -41,7 +41,7 @@ export const UserProvider: React.FC = ({ children }) => {
 		localStorage.setItem("token", response.data.token);
 		setUser({ ...loggedUser });
 
-		navigate("/profile");
+		navigate("/home");
 	}, [ user?.id ]);
 
 	const logout = useCallback(() => {
