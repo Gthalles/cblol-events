@@ -36,7 +36,7 @@ export const Router: React.FC = () => (
 	
 	<UserProvider>
 		<Routes>
-			<Route path="/" element={<Navigate to="/sign-up" />} />
+			<Route path="/" element={<Navigate to="/login" />} />
 
 			<Route path="/sign-up" element={
 				<Public>

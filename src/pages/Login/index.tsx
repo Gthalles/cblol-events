@@ -47,7 +47,7 @@ export const Login: React.FC = () => {
 					.then(() => {
 						console.log("Autenticado com sucesso!");
 					}).catch((error: any) => {
-						setErrorMessage(error.response.data);
+						setErrorMessage(error.response?.data);
 					});
 			}
 		}, 1000);
