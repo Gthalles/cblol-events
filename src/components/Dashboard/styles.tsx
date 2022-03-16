@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav `
-    width: 100px;
+    width: 100%;
     height: 100vh;
+    margin: 0;
     box-shadow: 2px 0px 0px rgba(0, 0, 0, 0.2);
 `;
      
