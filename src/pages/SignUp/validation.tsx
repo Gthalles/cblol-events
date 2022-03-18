@@ -44,7 +44,7 @@ export const schema = yup.object({
 	fullname: yup.string().required(requiredErrorMessage).min(name.minLength, minLengthMessage(name.minLength)).max(name.maxLength, maxLengthMessage(name.maxLength)),
 	email: yup.string().required(requiredErrorMessage).matches(email.regex, "Email inválido."),
 	document: yup.string().required(requiredErrorMessage).min(cpf.minLength, minLengthMessage(cpf.minLength)).max(cpf.maxLength, maxLengthMessage(cpf.maxLength)),
-	birthDate: yup.string().required(requiredErrorMessage),
+	birthdate: yup.string().required(requiredErrorMessage),
 	password: yup.string().required(requiredErrorMessage).min(password.minLength, minLengthMessage(password.minLength)).max(password.maxLength, maxLengthMessage(password.maxLength)).matches(password.regex, "Senha inválida."),
 	confirmPassword: yup.string().oneOf([yup.ref("password")], "Senhas não correspondem.").required(requiredErrorMessage),
 }).required();

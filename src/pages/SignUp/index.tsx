@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
 import { useForm, FieldValues } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { API } from "../../services/api";
@@ -18,6 +19,7 @@ import { ErrorMessage } from "../../components/ErrorMessage";
 export const SignUp: React.FC = () => {
 	const [ disable, setDisable ] = useState<boolean>(false);
 	const [ errorMessage, setErrorMessage ] = useState<IMessage>();
+	const navigate = useNavigate();
 
 	const registerUser = (userData: FieldValues) => {
 		setErrorMessage(undefined), setDisable(true);
@@ -25,14 +27,13 @@ export const SignUp: React.FC = () => {
 		setTimeout(async () => {
 			setDisable(false);
 
-			if (userData) {
-				API.post("/register-user", userData)
-					.then(() => {
-						console.log("Registrado com sucesso!");
-					}).catch((error: any) => {
-						setErrorMessage(error?.response?.data);
-					});
-			}
+			API.post("/register-user", userData)
+				.then(() => {
+					console.log("Registrado com sucesso!");
+					navigate("/login");
+				}).catch((error: any) => {
+					setErrorMessage(error?.response?.data);
+				});
 		}, 1000);
 	};
 
@@ -43,13 +44,13 @@ export const SignUp: React.FC = () => {
 	});
 
 	useEffect(() => {
-		if (errors.fullname || errors.birthDate || errors.document || errors.email ||  errors.password || errors.confirmPassword) {
+		if (errors.fullname || errors.birthdate || errors.document || errors.email ||  errors.password || errors.confirmPassword) {
 			setDisable(true);
 		} else {
 			setDisable(false);
 		}
 
-	}, [ errors.fullname || errors.birthDate || errors.document || errors.email ||  errors.password || errors.confirmPassword ]);
+	}, [ errors.fullname || errors.birthdate || errors.document || errors.email ||  errors.password || errors.confirmPassword ]);
 
 	return (
 		<Background image={ background }>
@@ -70,12 +71,12 @@ export const SignUp: React.FC = () => {
 						/>
 
 						<Field
-							id="birthDate"	
-							register={ { ...register("birthDate") } }
+							id="birthdate"	
+							register={ { ...register("birthdate") } }
 							type="date"
 							placeholder="DD/MM/YYYY"
 							label="Date de nascimento"
-							errorMessage={ errors.birthDate?.message }
+							errorMessage={ errors.birthdate?.message }
 							onInput={ () => setErrorMessage(undefined) }
 						/>
 
