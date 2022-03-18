@@ -1,5 +1,5 @@
 export interface IUser {
-    birthDate: string;
+    birthdate: string;
     exp: number;
     fullname: string;
     iat: number;

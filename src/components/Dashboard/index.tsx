@@ -2,29 +2,39 @@ import React, { JSXElementConstructor, useEffect, useState } from "react";
 import * as S from "./styles";
 import { useUserContext } from "../../providers/UserProvider";
 
-import logo from "../../assets/images/logo.png";
-import eventsIcon from "../../assets/icons/events-icon.png";
-import myEventsIcon from "../../assets/icons/my-events-icon.png";
-import accountIcon from "../../assets/icons/account-icon.png";
-import logoutIcon from "../../assets/icons/logout-icon.png";
-import addRecepcionistIcon from  "../../assets/icons/add-recepcionist-icon.png";
-import recepcionistIcon from  "../../assets/icons/recepcionists-icon.png";
-import newEventIcon from "../../assets/icons/new-event-icon.png";
-import statisticIcon from "../../assets/icons/statistic-icon.png";
+import logo from "../../assets/icons/dashboard-logo.svg";
+import eventsIcon from "../../assets/icons/events-icon.svg";
+import myEventsIcon from "../../assets/icons/my-events-icon.svg";
+import accountIcon from "../../assets/icons/account-icon.svg";
+import logoutIcon from "../../assets/icons/logout-icon.svg";
+import addRecepcionistIcon from  "../../assets/icons/add-recepcionist-icon.svg";
+import recepcionistIcon from  "../../assets/icons/recepcionists-icon.svg";
+import newEventIcon from "../../assets/icons/new-event-icon.svg";
+import statisticIcon from "../../assets/icons/statistic-icon.svg";
 
 import activeEventsIcon from "../../assets/icons/activated-icons/active-events-icon.svg";
 import activeMyEventsIcon from "../../assets/icons/activated-icons/active-my-events-icon.svg";
 import activeAccountIcon from "../../assets/icons/activated-icons/active-account-icon.svg";
 import activeLogoutIcon from "../../assets/icons/activated-icons/active-logout-icon.svg";
-import activeAddRecepcionistIcon from  "../../assets/icons/activated-icons/active-add-recepcionist-icon.png";
-import activeRecepcionistIcon from  "../../assets/icons/activated-icons/active-recepcionists-icon.png";
-import activeNewEventIcon from "../../assets/icons/activated-icons/active-new-event-icon.png";
-import activeStatisticIcon from "../../assets/icons/activated-icons/active-statistic-icon.png";
-import { JsxElement, JsxExpression, JsxFragment } from "typescript";
+import activeAddRecepcionistIcon from  "../../assets/icons/activated-icons/active-add-recepcionist-icon.svg";
+import activeRecepcionistIcon from  "../../assets/icons/activated-icons/active-recepcionists-icon.svg";
+import activeNewEventIcon from "../../assets/icons/activated-icons/active-new-event-icon.svg";
+import activeStatisticIcon from "../../assets/icons/activated-icons/active-statistic-icon.svg";
+
+interface Props {
+	activeEvents?: boolean;
+	activeMyEvents?: boolean;
+	activeAccount?: boolean;
+	activeLogout?: boolean;
+	activeAddRecepcionist?: boolean;
+	activeRecepcionist?: boolean;
+	activeNewEvent?: boolean;
+	activeStatistic?: boolean;
+}
 
 
 
-export const Dashboard: React.FC = () => {
+export const Dashboard: React.FC<Props> = ({activeEvents, activeMyEvents, activeAccount, activeLogout, activeAddRecepcionist, activeRecepcionist, activeNewEvent, activeStatistic }: Props) => {
 
 	const { user, logout } = useUserContext();
 
@@ -34,7 +44,7 @@ export const Dashboard: React.FC = () => {
 		<S.Menu title="user-dashboard">
 			<S.MenuItem>
 				<S.ItemLink href="/available-events">
-					<S.Icon src={ eventsIcon } alt="Ícone de Eventos" />
+					<S.Icon src={ activeEvents ? eventsIcon : activeEventsIcon } alt="Ícone de Eventos" />
 				</S.ItemLink>
 			</S.MenuItem>
 
@@ -62,25 +72,25 @@ export const Dashboard: React.FC = () => {
 		<S.Menu title="recepcionist-dashboard">
 			<S.MenuItem>
 				<S.ItemLink href="/available-events">
-					<S.Icon src={ activeEventsIcon } alt="Ícone de Eventos" />
+					<S.Icon src={ activeEvents ? eventsIcon : activeEventsIcon } alt="Ícone de Eventos" />
 				</S.ItemLink>
 			</S.MenuItem>
 
 			<S.MenuItem>
-				<S.ItemLink href="/events/recepcionist">
-					<S.Icon src={ activeMyEventsIcon } alt="Ícone de meus Eventos" />
+				<S.ItemLink href="/events/user">
+					<S.Icon src={ myEventsIcon } alt="Ícone de Meus Eventos" />
 				</S.ItemLink>
 			</S.MenuItem>
 
 			<S.MenuItem>
 				<S.ItemLink href="/home">
-					<S.Icon src={ activeAccountIcon } alt="Ícone de Perfil" />
+					<S.Icon src={ accountIcon } alt="Ícone de Perfil" />
 				</S.ItemLink>
 			</S.MenuItem>
 
 			<S.MenuItem>
 				<S.ItemLink href="/" onClick={ logout }>
-					<S.Icon src={ activeLogoutIcon } alt="Ícone de Logout" />
+					<S.Icon src={ logoutIcon } alt="Ícone de Logout" />
 				</S.ItemLink>
 			</S.MenuItem>
 		</S.Menu>
@@ -96,7 +106,7 @@ export const Dashboard: React.FC = () => {
 
 			<S.MenuItem>
 				<S.ItemLink href="/available-events">
-					<S.Icon src={ eventsIcon } alt="Ícone de Eventos" />
+					<S.Icon src={ activeEvents ? activeEventsIcon : eventsIcon } alt="Ícone de Eventos" />
 				</S.ItemLink>
 			</S.MenuItem>
 
@@ -148,8 +158,6 @@ export const Dashboard: React.FC = () => {
 				
 		}
 
-		console.log(dashboard);
-
 	}, [ user?.id ]);
 
 	return (
@@ -157,7 +165,6 @@ export const Dashboard: React.FC = () => {
 			<S.ItemLink href="/home">
 				<S.Logo src={ logo } alt="CBLOL-Events logo" />
 			</S.ItemLink>
-
 			{ dashboard }
 		</S.Nav>
 	);
