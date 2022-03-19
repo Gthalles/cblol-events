@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section ` 
     width: 32vw;
-    height: 70vh;
+    height: 72vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,12 +25,12 @@ export const Logo = styled.img `
     margin-bottom: 20px;
 `;
 
-export const SuccessText = styled.p `
+export const FailedText = styled.p `
     margin: 40px auto;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.09em;
-    color: #0F9F26;
+    color: #D61B24;
 `;
 
 export const Text = styled.p `
