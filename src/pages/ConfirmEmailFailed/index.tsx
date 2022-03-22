@@ -17,7 +17,7 @@ export const ConfirmEmailFailed: React.FC = () => {
                     Este email já foi confirmado anteriormente. Você pode fazer login com seu e-mail e senha clicando no botão abaixo
 				</S.Text>
 				<S.ButtonContainer>
-					<Button color="#0BC4E2">Fazer login</Button>
+					<Button redirectTo="/login" color="#0BC4E2">Fazer Login</Button>
 				</S.ButtonContainer>
 			</S.Section>
 		</Background>

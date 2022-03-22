@@ -13,9 +13,11 @@ export const ConfirmEmailSuccess: React.FC = () => {
 				<S.Title>Confirmação de Email</S.Title>
 				<S.Logo src={ logo } alt="CBLOL-Events logo" />
 				<S.SuccessText>Seu e-mail foi confirmado com sucesso!</S.SuccessText>
-				<S.Text>Agora você pode fazer login com seu e-mail e senha clicando no botão abaixo</S.Text>
+				<S.Text>
+					Agora você pode fazer login com seu e-mail e senha clicando no botão abaixo
+				</S.Text>
 				<S.ButtonContainer>
-					<Button color="#0BC4E2">Fazer login</Button>
+					<Button redirectTo="/login" color="#0BC4E2">Fazer Login</Button>
 				</S.ButtonContainer>
 			</S.Section>
 		</Background>
