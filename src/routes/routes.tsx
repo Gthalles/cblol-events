@@ -5,6 +5,9 @@ import { UserProvider, useUserContext } from "../providers/UserProvider";
 
 import { SignUp } from "../pages/SignUp";
 import { Login } from "../pages/Login";
+import { ConfirmEmailRequest } from "../pages/ConfirmEmailRequest";
+import { ConfirmEmailSuccess } from "../pages/ConfirmEmailSuccess";
+import { ConfirmEmailFailed } from "../pages/ConfirmEmailFailed";
 import { AvailableEvents } from "../pages/AvailableEvents";
 import { Home } from "../pages/Home";
 
@@ -41,6 +44,24 @@ export const Router: React.FC = () => (
 			<Route path="/sign-up" element={
 				<Public>
 					<SignUp />
+				</Public>
+			} />
+
+			<Route path="/request-email-confirmation" element={
+				<Public>
+					<ConfirmEmailRequest />
+				</Public>
+			} />
+
+			<Route path="/successful-email-confirmation" element={
+				<Public>
+					<ConfirmEmailSuccess />
+				</Public>
+			} />
+
+			<Route path="/failed-email-confirmation" element={
+				<Public>
+					<ConfirmEmailFailed />
 				</Public>
 			} />
 			

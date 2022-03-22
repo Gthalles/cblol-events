@@ -5,13 +5,16 @@ export interface Props {
     color: string;
 	disabledColor?: string;
 	disable?: boolean;
+	redirectTo?: string;
 }
 
-const Button: React.FC<Props> = ({ color, disabledColor, disable, children }) => {
+const Button: React.FC<Props> = ({ color, disabledColor, disable, redirectTo, children }) => {
 	return (
-		<S.Button type="submit" color={ color } disabledColor={ disabledColor } disable={ disable }>
-			{ children }
-		</S.Button>
+		<S.ButtonLink href={ redirectTo }>
+			<S.Button type="submit" color={ color } disabledColor={ disabledColor } disable={ disable }>
+				{ children }
+			</S.Button>
+		</S.ButtonLink>
 	);
 };
 
