@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { Props } from ".";
 
+export const ButtonLink = styled.a `
+    width: 100%;
+    height: 100%;
+`;
+
 export const Button = styled.button `
     width: 100%;
     height: 35px;

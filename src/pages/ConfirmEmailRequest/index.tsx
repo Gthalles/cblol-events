@@ -1,20 +1,20 @@
 import React from "react";
-import { Background } from "../../components/Background";
 import * as S from "./styles";
 
-import backgroundImage from "../../assets/images/failed-email-confirmation.png";
-import logo from "../../assets/images/logo.png";
+import { Background } from "../../components/Background";
 import { Button } from "../../components/Button";
+import backgroundImage from "../../assets/images/request-email-confirmation.png";
+import logo from "../../assets/images/logo.png";
 
-export const ConfirmEmailFailed: React.FC = () => {
+export const ConfirmEmailRequest: React.FC = () => {
 	return (
 		<Background image={ backgroundImage }>
 			<S.Section>
 				<S.Title>Confirmação de Email</S.Title>
 				<S.Logo src={ logo } alt="CBLOL-Events logo" />
-				<S.FailedText>Não foi possível confirmar o seu email!</S.FailedText>
+				<S.SuccessText>Parabéns, agora falta pouco!</S.SuccessText>
 				<S.Text>
-                    Este email já foi confirmado anteriormente. Você pode fazer login com seu e-mail e senha clicando no botão abaixo
+                    Enviamos um link de verificação para o e-mail informado no cadastro.
 				</S.Text>
 				<S.ButtonContainer>
 					<Button redirectTo="/login" color="#0BC4E2">Fazer Login</Button>
