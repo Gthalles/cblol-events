@@ -9,6 +9,7 @@ import { ConfirmEmailRequest } from "../pages/ConfirmEmailRequest";
 import { ConfirmEmailSuccess } from "../pages/ConfirmEmailSuccess";
 import { ConfirmEmailFailed } from "../pages/ConfirmEmailFailed";
 import { AvailableEvents } from "../pages/AvailableEvents";
+import { RecoveryPassowrd } from "../pages/RecoveryPassword";
 import { Home } from "../pages/Home";
 
 const Public = ({ children }: any) => {
@@ -36,7 +37,6 @@ const Private = ({ children }: any) => {
 };
 
 export const Router: React.FC = () => (
-	
 	<UserProvider>
 		<Routes>
 			<Route path="/" element={<Navigate to="/login" />} />
@@ -62,6 +62,12 @@ export const Router: React.FC = () => (
 			<Route path="/failed-email-confirmation" element={
 				<Public>
 					<ConfirmEmailFailed />
+				</Public>
+			} />
+
+			<Route path="/recovery-password" element={
+				<Public>
+					<RecoveryPassowrd />
 				</Public>
 			} />
 			

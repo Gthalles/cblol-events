@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-const requiredErrorMessage = "Campo obrigatório.";
+export const requiredErrorMessage = "Campo obrigatório.";
 
 const minLengthMessage = (minLength: number) => {
 	return `Mínimo de ${minLength} caracteres.`;
@@ -16,7 +16,7 @@ const name = {
 	maxLength: 80,
 };
 
-const email = {
+export const email = {
 	name: "Email",
 	regex: /^(\S+)@((?:(?:(?!-)[a-zA-Z0-9-]{1,62}[a-zA-Z0-9])\.)+[a-zA-Z0-9]{2,12})$/
 };
