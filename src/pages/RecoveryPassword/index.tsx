@@ -12,7 +12,7 @@ import { schema } from "./validation";
 import { IMessage } from "../../models/message";
 
 
-export const RecoveryPassowrd: React.FC = () => {
+export const RecoveryPassword: React.FC = () => {
 	const [ disable, setDisable ] = useState<boolean>(false);
 	const [ errorMessage, setErrorMessage ] = useState<IMessage>();
 
