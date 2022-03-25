@@ -84,7 +84,7 @@ export const Login: React.FC = () => {
 						Enviar
 					</Button>
 
-					<p>Esqueceu a sua senha? <a href="">Clique aqui</a></p>
+					<p>Esqueceu a sua senha? <a href="/recovery-password">Clique aqui</a></p>
 					<p>Não possui uma conta? <a href="/sign-up">Cadastre-se</a></p>
 				</S.Form>
 			</S.Section>

@@ -9,7 +9,8 @@ import { ConfirmEmailRequest } from "../pages/ConfirmEmailRequest";
 import { ConfirmEmailSuccess } from "../pages/ConfirmEmailSuccess";
 import { ConfirmEmailFailed } from "../pages/ConfirmEmailFailed";
 import { AvailableEvents } from "../pages/AvailableEvents";
-import { RecoveryPassowrd } from "../pages/RecoveryPassword";
+import { RecoveryPassword } from "../pages/RecoveryPassword";
+import { ChangePassword } from "../pages/ChangePassword";
 import { Home } from "../pages/Home";
 
 const Public = ({ children }: any) => {
@@ -67,7 +68,13 @@ export const Router: React.FC = () => (
 
 			<Route path="/recovery-password" element={
 				<Public>
-					<RecoveryPassowrd />
+					<RecoveryPassword />
+				</Public>
+			} />
+
+			<Route path="/change-password" element={
+				<Public>
+					<ChangePassword />
 				</Public>
 			} />
 			
